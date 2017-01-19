@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <title>周杰伦专辑介绍</title>
+
+    <!-- 载入所有的组件资源 -->
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.fullPage.js"></script>
+
+
+    <!-- H5对象：进行内容管理 -->
+
+    <script type="text/javascript" src="js/H5.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/H5.css" >
+
+    <script type="text/javascript" src="js/H5_loading.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/H5_loading.css" >
+
+    <!-- 页面逻辑的样式 -->
+    <style type="text/css">
+
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .h5_page{
+            background-image: url(imgs/j3.png);
+        }
+        .h5_page_face{
+            background-image: url(imgs/j1.jpg);
+        }
+
+        .h5_component_name_slogan{
+            -webkit-animation:rock 2s infinite 2s;
+        }
+        @-webkit-keyframes rock{
+            0%{ transform:rotate(0deg)}
+            5%{ transform:rotate(3deg)}
+            10%{ transform:rotate(-4deg)}
+            15%{ transform:rotate(3deg)}
+            20%{ transform:rotate(-2deg)}
+            25%{ transform:rotate(1deg)}
+            30%{ transform:rotate(-1deg)}
+            70%{ transform:rotate(0deg)}
+            100%{ transform:rotate(0deg);}
+        }
+        .h5_component_name_logo{
+            -webkit-animation:rota linear forwards 2s ;
+        }
+        @-webkit-keyframes rota{
+            0%{ transform:rotate(0deg)}
+            50%{ transform:rotate(15deg)}
+            100%{ transform:rotate(-5deg);}
+
+        }
+        .h5_component_name_fly{
+            -webkit-animation:fly 2s infinite 1s ;
+        }
+        @-webkit-keyframes fly{
+           0%{ transform:rotate(0deg)}
+                      5%{ transform:rotateZ(3deg)}
+                      10%{ transform:rotateZ(-4deg)}
+                      15%{ transform:rotateZ(3deg)}
+                      20%{ transform:rotateZ(-2deg)}
+                      25%{ transform:rotateZ(1deg)}
+                      30%{ transform:rotateZ(-1deg)}
+                      70%{ transform:rotateZ(0deg)}
+                      100%{ transform:rotateZ(0deg);}
+
+        }
+
+        .h5_component_name_caption{
+            background-image: url(imgs/page_caption_bg.png);
+            width: 283px;
+            height: 160px;
+            text-align: center;
+            line-height: 140px;
+            font-size: 20px;
+            color: #fff;
+        }
+        .h5_component_name_back{
+            top: 30px;
+            -webkit-animation:back 2s infinite 2s;
+        }
+
+        @-webkit-keyframes back{
+            50%{ top: 20px; }
+        }
+
+        /*底部箭头 */
+        .u-arrow-bottom{
+            position:absolute;
+            bottom:20px;
+            left: 50%;
+            z-index:9999;
+            width: 24px;
+            height: 14px;
+            margin-left:-12px;
+        }
+        .u-arrow-bottom img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -7px 0 0 -14px;
+            width: 24px;
+            height: 14px;
+            animation:start 1.5s infinite ease-in-out;
+        }
+        @-webkit-keyframes start{
+            0%,30%{
+                    opacity:0;
+                    -webkit-transform: translate(0, 10px);
+            }
+            60%{
+                    opacity:1;
+                    -webkit-transform: translate(0, 0);
+            }
+            100%{
+                    opacity:0;
+                    -webkit-transform: translate(0, -8px);
+            }
+
+        }
+          /*  头部音乐 样式   */
+            #audio_btn{
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    z-index: 9999;
+                    width: 50px;
+                    height: 50px;
+                    background-repeat:no-repeat;
+            }
+            .off{
+                    background-image:url(http://ac-d51ssff9.clouddn.com/654c75f9e2dcc2fc.png);
+                    background-size:30px 30px;
+                    background-position:center center;
+            }
+            .rotate{
+                    animation:rotating 1.2s linear infinite;
+                    background-image:url(http://ac-d51ssff9.clouddn.com/654c75f9e2dcc2fc.png);
+                    background-size:30px 30px;
+                    background-position:center center;
+            }
+            @-webkit-keyframes rotating{
+                    from{transform:rotate(0deg)}
+                    to {transform: rotate(360deg)}
+            }
+    </style>
+
+
+    <body>
+
+   <!--  <div class="loading">
+
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+
+        <div id="rate">0%</div> -->
+
+       <!--底部箭头&头部音乐 -->
+        <section class="u-arrow-bottom">
+            <img src="http://ac-d51ssff9.clouddn.com/eeb12bb2b4271ec7.png" alt="">
+        </section>
+        <div id="audio_btn" class="video_exist off">
+          <div id="m-icon"></div>
+          <audio src="./MP3/Silence.mp3" loop="loop" id="media"></audio>
+        </div>
+        <!-- <div id="globalAudio" class="u-globalAudio globalAudio-default z-pause" style="right: 20px; top: 20px;">
+<div class="u-globalAudio-0"></div>
+<audio id="globalAudioPlayer" src="http://img.liveapp.cn/group2/M00/3D/77/CoQ8n1WmcIOAW6O3ADYVEWwF4OY761.mp3" loop="" autoplay="false"></audio>
+<div class="coffee-steam-box" style="height: 100px; width: 50px; top: -80px; position: absolute; overflow: hidden; z-index: 0; left: 10px;"><span class="coffee-steam" style="position: absolute; color: rgb(169, 92, 93); font-family: Geneva; display: block; transform: rotate(-19deg) scale(0.568091); top: 25px; left: -8px; opacity: 0; transition: top 5.941s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(90, 7, 10); font-family: Geneva; display: block; transform: rotate(12deg) scale(0.452023); top: 28px; left: -9px; opacity: 0; transition: top 5.178s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(168, 34, 203); font-family: 'Trebuchet MS'; display: block; transform: rotate(73deg) scale(0.897077); top: 22px; left: -4px; opacity: 0; transition: top 5.529s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(82, 173, 62); font-family: 'Lucida Sans Unicode'; display: block; transform: rotate(3deg) scale(0.93433); top: 48px; left: -7px; opacity: 0; transition: top 4.009s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(9, 155, 36); font-family: Arial; display: block; transform: rotate(80deg) scale(0.403072); top: 48px; left: -9px; opacity: 0; transition: top 5.083s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(27, 174, 45); font-family: Arial; display: block; transform: rotate(56deg) scale(0.524746); top: 35px; left: -7px; opacity: 0; transition: top 2.547s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(24, 167, 0); font-family: Geneva; display: block; transform: rotate(-36deg) scale(0.923702); top: 21px; left: 0px; opacity: 0; transition: top 4.688s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(38, 71, 84); font-family: 'MS Serif'; display: block; transform: rotate(-46deg) scale(0.953177); top: 46px; left: -22px; opacity: 0; transition: top 4.757s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(184, 147, 73); font-family: Arial; display: block; transform: rotate(34deg) scale(0.702734); top: 45px; left: -6px; opacity: 0; transition: top 5.433s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(199, 38, 149); font-family: Geneva; display: block; transform: rotate(-82deg) scale(0.747301); top: 32px; left: -18px; opacity: 0; transition: top 3.185s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span><span class="coffee-steam" style="position: absolute; color: rgb(225, 96, 55); font-family: 'Lucida Sans Unicode'; display: block; transform: rotate(6deg) scale(0.470968); top: 16px; left: -6px; opacity: 0; transition: top 2.998s cubic-bezier(0.09, 0.64, 0.16, 0.94) 0s, left, opacity;"><img src="http://staticeng.liveapp.cn/tpl/img/globalAudio.png"></span></div></div>
+ -->
+
+
+    <!-- 加载 H5组件 相关资源 -->
+    <script type="text/javascript">
+
+        var res = [
+            'Base','Bar','Bar_v','Point','Polyline',
+            'Radar','Pie','Ring'
+            ];
+        var html = [];
+        for(s in res){
+            html.push('<script type="text/javascript" src="js/H5Component'+res[s]+'.js"><\/script>');
+            html.push('<link rel="stylesheet" type="text/css" href="css/H5Component'+res[s]+'.css">');
+
+        }
+        document.write( html.join('') );
+    </script>
+    <!-- 主要逻辑 -->
+    <script type="text/javascript">
+
+
+            var h5 = new H5();
+
+            h5.whenAddPage = function(){
+                this.addComponent('slide_up',{
+                    bg:'imgs/footer.png',
+                    css:{
+                        opacity:0,
+                        left:0,bottom:-20,
+                        width:'100%',height:'20px',zIndex:999
+                    },
+                    animateIn:{
+                        opacity:1,bottom:'-1px'
+                    },
+                    animateOut:{
+                        opacity:0,bottom:'-20px'
+                    },
+                    delay:500
+                });
+            }
+
+            h5
+            .addPage('face')
+                .addComponent('logo',{
+                    center:true,
+                    width:395,
+                    height:100,
+                    text:'Jay',
+                    css:{opacity:0,textAlign:'center',color:'ivory',fontSize:'70px',fontWeight:'bold',fontFamily: 'LiHei Pro Medium'},
+                    animateIn:{top:100,opacity:1},
+                    animateOut:{top:0,opacity:0},
+                })
+
+                .addComponent('slogan',{
+                    center:true,
+                    width:356,
+                    height:356,
+                    bg:'imgs/j_slogan3.png',
+                    css:{opacity:0,top:200},
+                    animateIn:{left:'30%',opacity:1},
+                    animateOut:{left:'0%',opacity:0},
+                    delay:500
+                })
+
+        .addPage()
+                .addComponent('caption',{text:'《jay》'})
+                .addComponent('text',{
+                    width:500,
+                    height:30,
+                    center:true,
+                    text:'',
+                    css:{
+                        opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                    },
+                    animateIn:{opacity:1,top:120},
+                    animateOut:{opacity:0,top:240},
+                })
+                .addComponent('description',{
+                    center:true,
+                    width:580,
+                    height:680,
+                    bg:'imgs/description_bg.gif',
+                    css:{
+                        opacity:0,
+                        padding:'10px 10px 10px 10px',
+                        color:'#fff',
+                        fontSize:'15px',
+                        lineHeight:'18px',
+                        textAlign:'justify',
+                        top:100
+                    },
+                    text:'1997年9月，周杰伦被吴宗宪赏识而加入唱片公司担任任音乐制作助理，但是他写出来的歌没有一个歌手愿意接受。1999年12月，吴宗宪告诉周杰伦如果他能在10天之内写出50首歌曲，就帮他从中挑出10首歌曲出一张专辑。最终，周杰伦如约完成，他一手包办了10首歌的制作、作曲、合声编写、三首歌的编曲以及二首歌的作词，创作出了他的首张专辑《Jay》',
+                    animateIn:{opacity:1,top:130},
+                    animateOut:{opacity:0,top:240},
+                    delay:1500
+                })
+                .addComponent('people',{
+                    center:true,
+                    width:515,
+                    height:305,
+                    bg:'imgs/j_footer.png',
+                    css:{
+                        opacity:0,
+                        bottom:0,
+                        zIndex:99
+                    },
+                    animateIn:{opacity:1,bottom:30},
+                    animateOut:{opacity:0,bottom:0},
+                    delay:500
+                })
+                .addComponent('fly',{
+                    center:true,
+                    width:515,
+                    height:305,
+                    bg:'imgs/j_fly.png',
+                    css:{
+                        opacity:0,
+                        bottom:0,
+                        zIndex:98
+                    },
+                    animateIn:{opacity:1,bottom:30},
+                    animateOut:{opacity:0,bottom:0},
+                    delay:5500
+            })
+        .addPage()
+                    .addComponent('caption',{text:'《范特西》'})
+                    .addComponent('text',{
+                        width:500,
+                        height:30,
+                        center:true,
+                        text:'',
+                        css:{
+                            opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                        },
+                        animateIn:{opacity:1,top:120},
+                        animateOut:{opacity:0,top:240},
+                    })
+
+
+                    .addComponent('description',{
+                        center:true,
+                        width:580,
+                        height:680,
+                        bg:'imgs/description_bg.gif',
+                        css:{
+                            opacity:0,
+                            padding:'10px 10px 10px 10px',
+                            color:'#fff',
+                            fontSize:'15px',
+                            lineHeight:'18px',
+                            textAlign:'justify',
+                            top:100
+                        },
+                        text:'《范特西》的专辑名称来源是英文“Fantasy”的发音，意为“幻想”。《范特西》由周杰伦担任专辑的范特西范特西 (3张)监制，全碟10首歌曲均由周杰伦作曲。作词方面，周杰伦负责其中2首，其余作词工作分别由方文山及徐若瑄完成[5]  。周杰伦在制作《范特西》专辑时，没事先知会徐若瑄，便擅自更改了《开不了口》的歌名。',
+                        animateIn:{opacity:1,top:130},
+                        animateOut:{opacity:0,top:240},
+                        delay:1500
+                    })
+                    .addComponent('people',{
+                        center:true,
+                        width:515,
+                        height:305,
+                        bg:'imgs/j_footer.png',
+                        css:{
+                            opacity:0,
+                            bottom:0,
+                            zIndex:99
+                        },
+                        animateIn:{opacity:1,bottom:30},
+                        animateOut:{opacity:0,bottom:0},
+                        delay:500
+                    })
+                    .addComponent('fly',{
+                        center:true,
+                        width:515,
+                        height:305,
+                        bg:'imgs/j_fly.png',
+                        css:{
+                            opacity:0,
+                            bottom:0,
+                            zIndex:98
+                        },
+                        animateIn:{opacity:1,bottom:30},
+                        animateOut:{opacity:0,bottom:0},
+                        delay:5500
+                })
+
+        .addPage()
+                .addComponent('caption',{text:'《叶惠美》'})
+                .addComponent('text',{
+                    width:500,
+                    height:30,
+                    center:true,
+                    text:'',
+                    css:{
+                        opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                    },
+                    animateIn:{opacity:1,top:120},
+                    animateOut:{opacity:0,top:240},
+                })
+
+
+                .addComponent('description',{
+                    center:true,
+                    width:580,
+                    height:680,
+                    bg:'imgs/description_bg.gif',
+                    css:{
+                        opacity:0,
+                        padding:'10px 10px 10px 10px',
+                        color:'#fff',
+                        fontSize:'15px',
+                        lineHeight:'18px',
+                        textAlign:'justify',
+                        top:100
+                    },
+                    text:'《叶惠美》是周杰伦以他妈妈的名字命名的一张专辑 。由于《叶惠美》之前的那张专辑市场反应不甚理想，周杰伦求新求变的音乐理念在这张专辑里显得异常清晰。周杰伦不仅为专辑的多首歌曲作词、作曲，更是担当起了专辑的制作人2004年，该专辑获得了第15届金曲奖最佳流行音乐演唱专辑奖、第四届全球华语歌曲排行榜颁奖典礼年度最受欢迎专辑奖  。',
+                    animateIn:{opacity:1,top:130},
+                    animateOut:{opacity:0,top:240},
+                    delay:1500
+                })
+                .addComponent('people',{
+                    center:true,
+                    width:515,
+                    height:305,
+                    bg:'imgs/j_footer.png',
+                    css:{
+                        opacity:0,
+                        bottom:0,
+                        zIndex:99
+                    },
+                    animateIn:{opacity:1,bottom:30},
+                    animateOut:{opacity:0,bottom:0},
+                    delay:500
+                })
+                .addComponent('fly',{
+                    center:true,
+                    width:515,
+                    height:305,
+                    bg:'imgs/j_fly.png',
+                    css:{
+                        opacity:0,
+                        bottom:0,
+                        zIndex:98
+                    },
+                    animateIn:{opacity:1,bottom:30},
+                    animateOut:{opacity:0,bottom:0},
+                    delay:5500
+            })
+        .addPage()
+                          .addComponent('caption',{text:'《七里香》'})
+                          .addComponent('text',{
+                              width:500,
+                              height:30,
+                              center:true,
+                              text:'',
+                              css:{
+                                  opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                              },
+                              animateIn:{opacity:1,top:120},
+                              animateOut:{opacity:0,top:240},
+                          })
+
+
+                          .addComponent('description',{
+                              center:true,
+                              width:580,
+                              height:680,
+                              bg:'imgs/description_bg.gif',
+                              css:{
+                                  opacity:0,
+                                  padding:'10px 10px 10px 10px',
+                                  color:'#fff',
+                                  fontSize:'15px',
+                                  lineHeight:'18px',
+                                  textAlign:'justify',
+                                  top:100
+                              },
+                              text:'周杰伦对这张专辑的音乐充满自信，希望大家能把注意力焦点放在音乐上，将话题回归到音乐上，于是周杰伦把专辑命名为《七里香》。周杰伦在制作这张专辑时，融入了大量的古典音乐，而且在多首歌曲里使用了中国民乐。在创作和录制专辑歌曲时，周杰伦采用了多样化的方式，从唇齿与舌功唱法、现代诗情歌到抒情摇滚各式的音乐',
+                              animateIn:{opacity:1,top:130},
+                              animateOut:{opacity:0,top:240},
+                              delay:1500
+                          })
+                          .addComponent('people',{
+                              center:true,
+                              width:515,
+                              height:305,
+                              bg:'imgs/j_footer.png',
+                              css:{
+                                  opacity:0,
+                                  bottom:0,
+                                  zIndex:99
+                              },
+                              animateIn:{opacity:1,bottom:30},
+                              animateOut:{opacity:0,bottom:0},
+                              delay:500
+                          })
+                          .addComponent('fly',{
+                              center:true,
+                              width:515,
+                              height:305,
+                              bg:'imgs/j_fly.png',
+                              css:{
+                                  opacity:0,
+                                  bottom:0,
+                                  zIndex:98
+                              },
+                              animateIn:{opacity:1,bottom:30},
+                              animateOut:{opacity:0,bottom:0},
+                              delay:5500
+                      })
+        .addPage()
+                          .addComponent('caption',{text:'《十一月的萧邦》'})
+                          .addComponent('text',{
+                              width:500,
+                              height:30,
+                              center:true,
+                              text:'',
+                              css:{
+                                  opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                              },
+                              animateIn:{opacity:1,top:120},
+                              animateOut:{opacity:0,top:240},
+                          })
+
+
+                          .addComponent('description',{
+                              center:true,
+                              width:580,
+                              height:680,
+                              bg:'imgs/description_bg.gif',
+                              css:{
+                                  opacity:0,
+                                  padding:'10px 10px 10px 10px',
+                                  color:'#fff',
+                                  fontSize:'15px',
+                                  lineHeight:'18px',
+                                  textAlign:'justify',
+                                  top:100
+                              },
+                              text:'有“钢琴诗人”之称的萧邦，一直是学习古典音乐出身的周杰伦欣赏的音乐家，而周杰伦这张专辑，每首歌的歌名富有诗意。所以唱片公司提出以“十一月的萧邦”作为十一月发行的专辑名称时，周杰伦就同意了。为符合《十一月的萧邦》专辑，富有浪漫时期味道的感觉，杰伦特别选择俯拾即是艺术的“水都”威尼斯拍摄专辑照，在没落',
+                              animateIn:{opacity:1,top:130},
+                              animateOut:{opacity:0,top:240},
+                              delay:1500
+                          })
+                          .addComponent('people',{
+                              center:true,
+                              width:515,
+                              height:305,
+                              bg:'imgs/j_footer.png',
+                              css:{
+                                  opacity:0,
+                                  bottom:0,
+                                  zIndex:99
+                              },
+                              animateIn:{opacity:1,bottom:30},
+                              animateOut:{opacity:0,bottom:0},
+                              delay:500
+                          })
+                          .addComponent('fly',{
+                              center:true,
+                              width:515,
+                              height:305,
+                              bg:'imgs/j_fly.png',
+                              css:{
+                                  opacity:0,
+                                  bottom:0,
+                                  zIndex:98
+                              },
+                              animateIn:{opacity:1,bottom:30},
+                              animateOut:{opacity:0,bottom:0},
+                              delay:5500
+                      })
+        .addPage()
+                                    .addComponent('caption',{text:'《依然范特西》'})
+                                    .addComponent('text',{
+                                        width:500,
+                                        height:30,
+                                        center:true,
+                                        text:'',
+                                        css:{
+                                            opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                                        },
+                                        animateIn:{opacity:1,top:120},
+                                        animateOut:{opacity:0,top:240},
+                                    })
+
+
+                                    .addComponent('description',{
+                                        center:true,
+                                        width:580,
+                                        height:680,
+                                        bg:'imgs/description_bg.gif',
+                                        css:{
+                                            opacity:0,
+                                            padding:'10px 10px 10px 10px',
+                                            color:'#fff',
+                                            fontSize:'15px',
+                                            lineHeight:'18px',
+                                            textAlign:'justify',
+                                            top:100
+                                        },
+                                        text:'该专辑之所以定名为《依然范特西》，是为了与周杰伦2001年发行的专辑《范特西》作一个呼应和延续。《依然范特西》不仅与《范特西》在名字上有所关联，就连周杰伦在专辑中的造型以及专辑中的部分歌曲也都有呼应。周杰伦把自己在电影上的创意也用在了《依然范特西》中，因此这张专辑有三分之一的歌曲在讲故事',
+                                        animateIn:{opacity:1,top:130},
+                                        animateOut:{opacity:0,top:240},
+                                        delay:1500
+                                    })
+                                    .addComponent('people',{
+                                        center:true,
+                                        width:515,
+                                        height:305,
+                                        bg:'imgs/j_footer.png',
+                                        css:{
+                                            opacity:0,
+                                            bottom:0,
+                                            zIndex:99
+                                        },
+                                        animateIn:{opacity:1,bottom:30},
+                                        animateOut:{opacity:0,bottom:0},
+                                        delay:500
+                                    })
+                                    .addComponent('fly',{
+                                        center:true,
+                                        width:515,
+                                        height:305,
+                                        bg:'imgs/j_fly.png',
+                                        css:{
+                                            opacity:0,
+                                            bottom:0,
+                                            zIndex:98
+                                        },
+                                        animateIn:{opacity:1,bottom:30},
+                                        animateOut:{opacity:0,bottom:0},
+                                        delay:5500
+                    })
+        .addPage()
+                       .addComponent('caption',{text:'《我很忙》'})
+                       .addComponent('text',{
+                           width:500,
+                           height:30,
+                           center:true,
+                           text:'',
+                           css:{
+                               opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                           },
+                           animateIn:{opacity:1,top:120},
+                           animateOut:{opacity:0,top:240},
+                       })
+
+
+                       .addComponent('description',{
+                           center:true,
+                           width:580,
+                           height:680,
+                           bg:'imgs/description_bg.gif',
+                           css:{
+                               opacity:0,
+                               padding:'10px 10px 10px 10px',
+                               color:'#fff',
+                               fontSize:'15px',
+                               lineHeight:'18px',
+                               textAlign:'justify',
+                               top:100
+                           },
+                           text:'《我很忙》由周杰伦担任专辑的监制，全碟10首歌曲均由周杰伦作曲。作词方面，周杰伦负责其中2首，其余作词工作由方文山、黄俊郎完成.一般音乐创作大多先有音乐才会有画面，而这张专辑是先有了影像的想法、造型上比较西部复古一点，才写了《牛仔很忙》这首歌，这正是周杰伦之前所有专辑没有过的曲风.',
+                           animateIn:{opacity:1,top:130},
+                           animateOut:{opacity:0,top:240},
+                           delay:1500
+                       })
+                       .addComponent('people',{
+                           center:true,
+                           width:515,
+                           height:305,
+                           bg:'imgs/j_footer.png',
+                           css:{
+                               opacity:0,
+                               bottom:0,
+                               zIndex:99
+                           },
+                           animateIn:{opacity:1,bottom:30},
+                           animateOut:{opacity:0,bottom:0},
+                           delay:500
+                       })
+                       .addComponent('fly',{
+                           center:true,
+                           width:515,
+                           height:305,
+                           bg:'imgs/j_fly.png',
+                           css:{
+                               opacity:0,
+                               bottom:0,
+                               zIndex:98
+                           },
+                           animateIn:{opacity:1,bottom:30},
+                           animateOut:{opacity:0,bottom:0},
+                           delay:5500
+           })
+        .addPage()
+                               .addComponent('caption',{text:'《跨时代》'})
+                               .addComponent('text',{
+                                   width:500,
+                                   height:30,
+                                   center:true,
+                                   text:'',
+                                   css:{
+                                       opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                                   },
+                                   animateIn:{opacity:1,top:120},
+                                   animateOut:{opacity:0,top:240},
+                               })
+
+
+                               .addComponent('description',{
+                                   center:true,
+                                   width:580,
+                                   height:680,
+                                   bg:'imgs/description_bg.gif',
+                                   css:{
+                                       opacity:0,
+                                       padding:'10px 10px 10px 10px',
+                                       color:'#fff',
+                                       fontSize:'15px',
+                                       lineHeight:'18px',
+                                       textAlign:'justify',
+                                       top:100
+                                   },
+                                   text:'周杰伦希望自己的音乐就像专辑封面的吸血鬼一样，跨越时代也超越世代，因此命名为《跨时代》。专辑封面中，穿着中古世纪的服装的周杰伦化身为吸血鬼王子，穿梭时空来到现代，在古堡的天台上凝视远方。拍摄封面时，工作人员将披黑色蕾丝披风风尾系上透明的钢丝线，让人爬上工作梯拉动裙摆，来制造飘逸效果',
+                                   animateIn:{opacity:1,top:130},
+                                   animateOut:{opacity:0,top:240},
+                                   delay:1500
+                               })
+                               .addComponent('people',{
+                                   center:true,
+                                   width:515,
+                                   height:305,
+                                   bg:'imgs/j_footer.png',
+                                   css:{
+                                       opacity:0,
+                                       bottom:0,
+                                       zIndex:99
+                                   },
+                                   animateIn:{opacity:1,bottom:30},
+                                   animateOut:{opacity:0,bottom:0},
+                                   delay:500
+                               })
+                               .addComponent('fly',{
+                                   center:true,
+                                   width:515,
+                                   height:305,
+                                   bg:'imgs/j_fly.png',
+                                   css:{
+                                       opacity:0,
+                                       bottom:0,
+                                       zIndex:98
+                                   },
+                                   animateIn:{opacity:1,bottom:30},
+                                   animateOut:{opacity:0,bottom:0},
+                                   delay:5500
+                   })
+        .addPage()
+                               .addComponent('caption',{text:'《12新作》'})
+                               .addComponent('text',{
+                                   width:500,
+                                   height:30,
+                                   center:true,
+                                   text:'',
+                                   css:{
+                                       opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                                   },
+                                   animateIn:{opacity:1,top:120},
+                                   animateOut:{opacity:0,top:240},
+                               })
+
+
+                               .addComponent('description',{
+                                   center:true,
+                                   width:580,
+                                   height:680,
+                                   bg:'imgs/description_bg.gif',
+                                   css:{
+                                       opacity:0,
+                                       padding:'10px 10px 10px 10px',
+                                       color:'#fff',
+                                       fontSize:'15px',
+                                       lineHeight:'18px',
+                                       textAlign:'justify',
+                                       top:100
+                                   },
+                                   text:'《12新作》是周杰伦推出的第十二张个人专辑，专辑中收录了周杰伦的12首作品，于2012年12月28日发行，词曲创作时，周杰伦先在苏格兰拍好MV画面，再打电话告诉文山他看到的景象，方文山才将周杰伦描述的海鸥、苏格兰风笛、爱丁堡、中古世纪的感觉写进歌词中，文山传来歌词后，周杰伦就在爱丁堡对嘴，两人以这样特别的方式完成了《明明就》词曲的合作。',
+                                   animateIn:{opacity:1,top:130},
+                                   animateOut:{opacity:0,top:240},
+                                   delay:1500
+                               })
+                               .addComponent('people',{
+                                   center:true,
+                                   width:515,
+                                   height:305,
+                                   bg:'imgs/j_footer.png',
+                                   css:{
+                                       opacity:0,
+                                       bottom:0,
+                                       zIndex:99
+                                   },
+                                   animateIn:{opacity:1,bottom:30},
+                                   animateOut:{opacity:0,bottom:0},
+                                   delay:500
+                               })
+                               .addComponent('fly',{
+                                   center:true,
+                                   width:515,
+                                   height:305,
+                                   bg:'imgs/j_fly.png',
+                                   css:{
+                                       opacity:0,
+                                       bottom:0,
+                                       zIndex:98
+                                   },
+                                   animateIn:{opacity:1,bottom:30},
+                                   animateOut:{opacity:0,bottom:0},
+                                   delay:5500
+                   })
+        .addPage()
+                               .addComponent('caption',{text:'《哎哟，不错哦》'})
+                               .addComponent('text',{
+                                   width:500,
+                                   height:30,
+                                   center:true,
+                                   text:'',
+                                   css:{
+                                       opacity:0,textAlign:'center',color:'red',fontSize:'26px'
+                                   },
+                                   animateIn:{opacity:1,top:120},
+                                   animateOut:{opacity:0,top:240},
+                               })
+
+
+                               .addComponent('description',{
+                                   center:true,
+                                   width:580,
+                                   height:680,
+                                   bg:'imgs/description_bg.gif',
+                                   css:{
+                                       opacity:0,
+                                       padding:'10px 10px 10px 10px',
+                                       color:'#fff',
+                                       fontSize:'15px',
+                                       lineHeight:'18px',
+                                       textAlign:'justify',
+                                       top:100
+                                   },
+                                   text:'《哎哟，不错哦》是周杰伦发布的第13张专辑，整张专辑以他的口头禅“哎呦，不错哦”命名，以幽默创新做为专辑的主轴。专辑由包括方文山、黄俊郎、罗宇轩、黄婕熙、林迈可、黄雨勋等音乐人与周杰伦参与创作。在专辑造型上，周杰伦尝试与新锐造型师合作，化身时尚卓别林，摆出各种pose。',
+                                   animateIn:{opacity:1,top:130},
+                                   animateOut:{opacity:0,top:240},
+                                   delay:1500
+                               })
+                               .addComponent('people',{
+                                   center:true,
+                                   width:515,
+                                   height:305,
+                                   bg:'imgs/j_footer.png',
+                                   css:{
+                                       opacity:0,
+                                       bottom:0,
+                                       zIndex:99
+                                   },
+                                   animateIn:{opacity:1,bottom:30},
+                                   animateOut:{opacity:0,bottom:0},
+                                   delay:500
+                               })
+                               .addComponent('fly',{
+                                   center:true,
+                                   width:515,
+                                   height:305,
+                                   bg:'imgs/j_fly.png',
+                                   css:{
+                                       opacity:0,
+                                       bottom:0,
+                                       zIndex:98
+                                   },
+                                   animateIn:{opacity:1,bottom:30},
+                                   animateOut:{opacity:0,bottom:0},
+                                   delay:5500
+                               })
+                               .addComponent('share',{
+                                                width:128,
+                                                height:120,
+                                                bg:'imgs/tail_share.png',
+                                                css:{opacity:0,top:110,right:110},
+                                                animateIn:{opacity:1,top:10,right:10},
+                                                animateOut:{opacity:0,top:110,right:110},
+                                                delay:1000
+                                                  })
+                                     .addComponent('back',{
+                                                width:52,
+                                                height:50,
+                                                css:{top:10},
+                                                bg:'imgs/tail_back.png',
+                                                center:true,
+                                                onclick : function(){
+                                                     $.fn.fullpage.moveTo( 1 )
+                                                }
+                                            })
+
+                    .loader( ['imgs/j3.png','imgs/j1.png'] );
+
+
+                      $(function  () {
+                          //音乐播放
+                          var isPlaying = false;
+                          //播放音乐效果
+                          $('#audio_btn').click(function() {
+                                  if (isPlaying) {
+                                          isPlaying = false;
+                                          document.getElementById('media').pause();
+                                          $(this).addClass('off');
+                                          $(this).removeClass('rotate');
+                                  }else{
+                                  document.getElementById('media').play();
+                                  $(this).removeClass('off');
+                                  $(this).addClass('rotate');
+                                  isPlaying = true;
+                              }
+                          });
+                    });
+
+
+    </script>
+
+    </body>
+
+</html>
+  .addComponent('share',{
+                   width:128,
+                   height:120,
+                   bg:'imgs/tail_share.png',
+                   css:{opacity:0,top:110,right:110},
+                   animateIn:{opacity:1,top:10,right:10},
+                   animateOut:{opacity:0,top:110,right:110},
+                   delay:1000
+                     })
+        .addComponent('back',{
+                   width:52,
+                   height:50,
+                   bg:'imgs/tail_back.png',
+                   center:true,
+                   onclick : function(){
+                        $.fn.fullpage.moveTo( 1 )
+                   }
+               })

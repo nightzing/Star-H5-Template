@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>慕课网2015课程学习情况</title>
+
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .component{
+            width: 50%;
+            height: 50px;
+            margin-bottom: 20px;
+            background-color: #eee;
+            display: none;
+        }
+        /*箭头 */
+        .u-arrow-bottom{
+            position:absolute;
+            bottom:20px;
+            left: 50%;
+            z-index:9999;
+            width: 24px;
+            height: 14px;
+            margin-left:-12px;
+        }
+        .u-arrow-bottom img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -7px 0 0 -14px;
+            width: 24px;
+            height: 14px;
+            animation:start 1.5s infinite ease-in-out;
+        }
+        @-webkit-keyframes start{
+            0%,30%{
+                    opacity:0;
+                    -webkit-transform: translate(0, 10px);
+            }
+            60%{
+                    opacity:1;
+                    -webkit-transform: translate(0, 0);
+            }
+            100%{
+                    opacity:0;
+                    -webkit-transform: translate(0, -8px);
+            }
+                    
+        }
+            #audio_btn{
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    z-index: 9999;
+                    width: 50px;
+                    height: 50px;
+                    background-repeat:no-repeat;
+            }
+            .off{
+                    background-image:url(http://ac-d51ssff9.clouddn.com/654c75f9e2dcc2fc.png);
+                    background-size:30px 30px;
+                    background-position:center center;
+            }
+            .rotate{
+                    animation:rotating 1.2s linear infinite;
+                    background-image:url(http://ac-d51ssff9.clouddn.com/654c75f9e2dcc2fc.png);
+                    background-size:30px 30px;
+                    background-position:center center;
+            }
+            @-webkit-keyframes rotating{
+                    from{transform:rotate(0deg)}
+                    to {transform: rotate(360deg)}
+            }
+    </style>
+
+    <script type="text/javascript" src="../js/lib/jquery.js"></script>
+    <script type="text/javascript" src="../js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../js/lib/jquery.fullPage.js"></script>
+
+    <script type="text/javascript">
+
+        $(function (){
+            $('#h5').fullpage({
+                'sectionsColor': ['#254875','#007979','#DCB5FF','#82D900'],
+                onLeave:function( index , nextindex, direction){
+                    $('#h5').find('.page').eq(index-1).trigger('onLeave');
+                },
+                afterLoad:function( anchorLink,index ){
+                  $('#h5').find('.page').eq(index-1).trigger('onLoad')
+                }
+            }) ;       
+
+
+            $('.page').on('onLeave', function() {
+                console.log( $(this).attr('id') , '==>>','onLeave' );
+                $(this).find('.component').triggerHandler('onLeave')
+            });
+            $('.page').on('onLoad', function() {
+                console.log( $(this).attr('id') , '==>>','onLoad' );
+            });
+            //渐变效果
+            $('.component').on('onLoad', function() {
+               $(this).fadeIn();
+               return false;
+            });
+            $('.page').on('onLeave', function() {
+               $(this).fadeOut();
+               return false;
+            });
+            //音乐播放
+            var isPlaying = false;
+            //播放音乐效果
+            $('#audio_btn').click(function() {
+                    if (isPlaying) {
+                            isPlaying = false;
+                            document.getElementById('media').pause();
+                            $(this).addClass('off');
+                            $(this).removeClass('rotate');
+                    }else{
+                    document.getElementById('media').play();
+                    $(this).removeClass('off');
+                    $(this).addClass('rotate');
+                    isPlaying = true;
+                }
+            });
+        });
+
+    </script>
+ 
+    <body>
+    <!-- 用于验证 fullpage.js 切换页面，以及内容组织结构可用，组件能够进行动画 -->
+
+        <div id="h5">
+            <div class="lm-page section" id="page-1">
+                <div class="lm-component log">log</div>
+                <div class="lm-component slogan">slogan</div>
+            </div>
+            <div class="lm-page section" id="page-2">
+                <div class="lm-component desc">desc</div>
+            </div>
+            <div class="lm-page section" id="page-3 ">
+                <div class="lm-component bar">bar</div>
+            </div>
+
+           
+            </div>
+        </div>
+        <section class="u-arrow-bottom">
+            <img src="http://ac-d51ssff9.clouddn.com/eeb12bb2b4271ec7.png" alt="">
+        </section>
+        <div id="audio_btn" class="video_exist off">
+        <div id="m-icon"></div>
+        <audio src="https://mail.qq.com/cgi-bin/ftnDownload302?sid=MYVPlfe8G5ZlvhlP&fid=2%2F59f2fb22-7174-4356-9e39-30f67e7ef5a6&code=7f3a20bd&k=7a6633618dd5dd9b8304bec61430504b025f5553545250561a510256061d565702501e5857035b490456555705555501515352573228622319231d2c1c10d7afe0a9f584121d42a1eaa29e4f5f4051640a
+        " loop="loop" loop id="media"></audio>
+                        
+    </body>
+
+</html>
